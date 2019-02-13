@@ -22,6 +22,14 @@ If you have the sourcecode it would be better to use interpositioning.
 
 Dynamic Loading Hooks are known from CydiaSubstrate, Theos Jailed and IPA Patch. They are possible with sandboxed container apps as well.
 
+When dynamically loading a dylib and wanting to execute code on-load, one should use the compiler keyword 'constructor' demonstrated as following.
+
+```C
+  void __attribute__((constructor)) on_dylibload(void)
+  {
+      printf("Hello from injected dylib!\n");
+  }
+```
 
 ## Interpositioning
 
